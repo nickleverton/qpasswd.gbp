@@ -1,0 +1,17 @@
+Source: qpasswd
+Section: mail
+Priority: optional
+Maintainer: Nick Leverton <nick@leverton.org>
+Build-Depends: debhelper (>= 5), dietlibc-dev
+Standards-Version: 3.7.2
+
+Package: qpasswd
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: qpasswd - another collection of checkpasswords
+ The qpasswd tools are a collection of various tools (checkpasswd, checkqpasswd,
+ multicheckpw, and others). They are meant for use with checkpassword-compatible
+ authentication programs like qmail-popup and qmail-smtpd. Currently, the
+ following auth mechanism are supported: plain, login, apop, cram-md5, cram-sha1,
+ cram-ripemd, and digest-md5. No special libraries are required, and it compiles
+ against dietlibc.

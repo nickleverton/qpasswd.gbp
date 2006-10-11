@@ -3,9 +3,9 @@
 # - change it to fit your needs
 # - see also params.h
 
-MANDIR	= /usr/share/man
-DEST	= /command
-GROUP	= nofiles
+MANDIR	= $(DESTDIR)/usr/share/man
+DEST	= $(DESTDIR)/command
+GROUP	= nogroup
 
 ARCH	= $(shell uname -m | sed -e 's/i[4-9]86/i386/' -e 's/armv[3-6][lb]/arm/')
 DIET	= $(shell basename `which diet 2>/dev/null` 2>/dev/null)
@@ -16,7 +16,7 @@ CFLAGS	= -Os -Wall -pipe -fomit-frame-pointer
 LDFLAGS	= -s -lcrypt
 
 # extraflags
-CFLAGS += -mpreferred-stack-boundary=2 -march=$(ARCH) -mcpu=$(ARCH)
+CFLAGS += -mpreferred-stack-boundary=2 -march=$(ARCH)
 #CFLAGS += -W -Wchar-subscripts -Wmissing-prototypes -Wmissing-declarations -Wswitch -Wredundant-decls -Wunused
 #CFLAGS += -Werror
 #CFLAGS += -funroll-loops

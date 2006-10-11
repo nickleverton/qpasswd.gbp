@@ -1,0 +1,16 @@
+This package was debianized by Nick Leverton <nick@leverton.org> on
+Wed, 11 Oct 2006 22:25:49 +0100.
+
+It was downloaded from http://www.mcmilk.de/projects/qpasswd/
+
+Upstream Author:  Tino Reichardt <crypto@mcmilk.de>
+
+Copyright: 2004 Tino Reichardt
+
+License: GPL
+
+
+The Debian packaging is (C) 2006, Nick Leverton <nick@leverton.org> and
+is licensed under the GPL, see `/usr/share/common-licenses/GPL'.
+
+
