@@ -1,0 +1,26 @@
+# vi: ft=diff
+
+This patch attempts to fix qpasswd's checkpassword for CRAM-MD5
+
+2006-10-12 Nick Leverton <nick@leverton.org>
+
+== END PATCH
+diff -uNr do_checkqpasswd.c.orig do_checkqpasswd.c
+--- qpasswd-0.5/do_checkqpasswd.c.orig	2004-01-13 16:11:44.000000000 +0000
++++ qpasswd-0.5/do_checkqpasswd.c	2006-10-12 22:24:17.000000000 +0100
+@@ -103,13 +103,13 @@
+ /* 3. hmac_md5 checking (CRAM-MD5) */
+ 		if (tocheck & METHOD_CRAM_MD5) {
+ 			method=3; e=encrypted;
+-			hmac_md5(r_pass, l_pass, digest);
++			hmac_md5(l_pass, r_greet, digest);
+ 			for (j=0; j<16; j++) {
+ 				*e = hextab[digest[j]/16]; ++e;
+ 				*e = hextab[digest[j]%16]; ++e;
+ 			}
+ 			*e=0;
+-			if (!strcmp(r_greet,encrypted)) goto okay;
++			if (!strcmp(r_pass,encrypted)) goto okay;
+ 		}
+ #endif
+ 

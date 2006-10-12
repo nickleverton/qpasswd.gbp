@@ -24,6 +24,9 @@ configure: configure-stamp
 configure-stamp:
 	dh_testdir
 	# Add here commands to configure the package.
+	
+	ln -sf debian/patches
+	quilt push -a || test $$? = 2
 
 	touch configure-stamp
 
@@ -46,6 +49,12 @@ clean:
 
 	# Add here commands to clean up after the build process.
 	-$(MAKE) clean
+
+	quilt pop -a -R || test $$? = 2
+	
+	# quilt cruft
+	rm -f   patches
+	rm -rf .pc
 
 	dh_clean 
 

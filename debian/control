@@ -2,7 +2,7 @@ Source: qpasswd
 Section: mail
 Priority: optional
 Maintainer: Nick Leverton <nick@leverton.org>
-Build-Depends: debhelper (>= 5), dietlibc-dev
+Build-Depends: debhelper (>= 5), dietlibc-dev, quilt
 Standards-Version: 3.7.2
 
 Package: qpasswd

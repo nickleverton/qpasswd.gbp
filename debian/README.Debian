@@ -1,6 +1,11 @@
 qpasswd for Debian
 ------------------
 
-<possible notes regarding this package - if none, delete this file>
+This package differs from standard qpasswd in that the
+{/multicheckpw,checkpasswd,checkqpasswd,qpasswd} executable is mode 4511
+rather than 4510.  This allows the program to be used without needing
+to have all of smtpd, pop3d, imapd running under the same group.  It is
+however much less secure, as anyone with access to the binary can run
+any program under any userid in /etc/qpasswd.
 
  -- Nick Leverton <nick@leverton.org>, Wed, 11 Oct 2006 22:25:49 +0100

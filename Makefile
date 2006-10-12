@@ -74,7 +74,7 @@ install: uninstall
 	man/install-pages.sh $(MANDIR)
 	cp -f multicheckpw $(DEST)/multicheckpw
 	chown root.$(GROUP) $(DEST)/multicheckpw
-	chmod 4510 $(DEST)/multicheckpw
+	chmod 4511 $(DEST)/multicheckpw
 	ln -s multicheckpw $(DEST)/checkpasswd
 	ln -s multicheckpw $(DEST)/checkqpasswd
 	ln -s multicheckpw $(DEST)/qpasswd

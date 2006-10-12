@@ -1,3 +1,9 @@
+qpasswd (0.5-0njl.21) unstable; urgency=low
+
+  * Fix CRAM-MD5
+
+ -- Nick Leverton <nick@leverton.org>  Thu, 12 Oct 2006 22:29:18 +0100
+
 qpasswd (0.5-0njl.1) unstable; urgency=low
 
   * Initial release
