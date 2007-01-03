@@ -21,7 +21,7 @@
 #define WANT_SHADOW_PASSWD      1 /* support for getspnam() */
 #define WANT_LASTPOP            0 /* support for the .lastpop file */
 #define WANT_DIE_MSG            1 /* die_msg(code, "description") -> exit(exit) */
-#define WANT_DEBUG              1 /* enable extra debugging messages */
+#define WANT_DEBUG              0 /* enable extra debugging messages */
 #define WANT_ERRFDS             1 /* descriptors for logging ... see log.c !!! */
 #define WANT_ENVIRON_CHECK      1 /* check for authtype via $AUTH or $SASL */
 

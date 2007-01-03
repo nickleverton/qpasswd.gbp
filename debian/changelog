@@ -1,7 +1,7 @@
-qpasswd (0.5-0njl.21.1) unstable; urgency=low
+qpasswd (0.5-0njl.22) unstable; urgency=low
 
   * The "can't tell 2 from 22" release
-  * Debug CRAM-MD5
+  * Fix packaging
 
  -- Nick Leverton <nick@leverton.org>  Wed,  3 Jan 2007 14:50:00 +0000
 
