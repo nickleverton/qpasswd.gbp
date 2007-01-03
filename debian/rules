@@ -65,7 +65,12 @@ install: build
 	dh_installdirs
 
 	# Add here commands to install the package into debian/qpasswd.
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/qpasswd
+	$(MAKE) DESTDIR=$(CURDIR)/debian/qpasswd \
+		MANDIR='$$(DESTDIR)/usr/share/man' \
+		DEST='$$(DESTDIR)/command' \
+		GROUP=nogroup \
+			install
+
 	ln -s ../command/{checkpasswd,checkqpasswd,multicheckpw,qpasswd} $(CURDIR)/debian/qpasswd/bin
 
 

@@ -3,9 +3,9 @@
 # - change it to fit your needs
 # - see also params.h
 
-MANDIR	= /usr/share/man
-DEST	= /command
-GROUP	= nofiles
+MANDIR	= $(DESTDIR)/usr/share/man
+DEST	= $(DESTDIR)/command
+GROUP	= nogroup
 
 ARCH	= $(shell uname -m | sed -e 's/i[4-9]86/i386/' -e 's/armv[3-6][lb]/arm/')
 DIET	= $(shell basename `which diet 2>/dev/null` 2>/dev/null)
@@ -74,7 +74,7 @@ install: uninstall
 	man/install-pages.sh $(MANDIR)
 	cp -f multicheckpw $(DEST)/multicheckpw
 	chown root.$(GROUP) $(DEST)/multicheckpw
-	chmod 4510 $(DEST)/multicheckpw
+	chmod 4511 $(DEST)/multicheckpw
 	ln -s multicheckpw $(DEST)/checkpasswd
 	ln -s multicheckpw $(DEST)/checkqpasswd
 	ln -s multicheckpw $(DEST)/qpasswd

@@ -1,0 +1,15 @@
+--- qpasswd-0.5/Makefile.orig	2006-10-12 09:17:13.000000000 +0100
++++ qpasswd-0.5/Makefile	2006-10-12 09:45:10.000000000 +0100
+@@ -3,9 +3,9 @@
+ # - change it to fit your needs
+ # - see also params.h
+ 
+-MANDIR	= /usr/share/man
+-DEST	= /command
+-GROUP	= nofiles
++MANDIR	= $(DESTDIR)/usr/share/man
++DEST	= $(DESTDIR)/command
++GROUP	= nogroup
+ 
+ ARCH	= $(shell uname -m | sed -e 's/i[4-9]86/i386/' -e 's/armv[3-6][lb]/arm/')
+ DIET	= $(shell basename `which diet 2>/dev/null` 2>/dev/null)

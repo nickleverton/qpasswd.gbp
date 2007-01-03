@@ -45,6 +45,7 @@ int do_checkqpasswd(char *r_user, char *r_pass, char *r_greet)
 	char *e_sasl=getenv("SASL");
 
 	if (e_sasl) {
+		debug("%s=%s\n", "SASL", e_sasl);
 		int len=strlen(e_sasl);
 		for (i=0;sasl[i];i++)
 			if (case_diffb(e_sasl, len, sasl[i]) == 0)
@@ -79,12 +80,14 @@ int do_checkqpasswd(char *r_user, char *r_pass, char *r_greet)
 
 /* 1. plaintext checking (USER+PASS / LOGIN / PLAIN) */
 		if (tocheck & METHOD_PLAIN) {
+			debug("METHOD_PLAIN\n");
 			method=1;
 			if (!strcmp(r_pass,l_pass)) goto okay;
 		}
 
 /* 2. md5 checking (APOP) */
 		if (tocheck & METHOD_APOP) {
+			debug("METHOD_APOP\n");
 			MD5_CTX md5;
 			MD5_Init(&md5);
 			MD5_Update(&md5, r_greet, strlen(r_greet));
@@ -102,13 +105,16 @@ int do_checkqpasswd(char *r_user, char *r_pass, char *r_greet)
 #if WANT_CRAM_MD5
 /* 3. hmac_md5 checking (CRAM-MD5) */
 		if (tocheck & METHOD_CRAM_MD5) {
+			debug("METHOD_CRAM_MD5: r_pass=%s l_pass=%s\n", r_pass, l_pass);
 			method=3; e=encrypted;
 			hmac_md5(r_pass, l_pass, digest);
+			debug("METHOD_CRAM_MD5: digest=%s\n", digest);
 			for (j=0; j<16; j++) {
 				*e = hextab[digest[j]/16]; ++e;
 				*e = hextab[digest[j]%16]; ++e;
 			}
 			*e=0;
+			debug("METHOD_CRAM_MD5: r_greet=%s encrypted=%s\n", r_greet, encrypted);
 			if (!strcmp(r_greet,encrypted)) goto okay;
 		}
 #endif
@@ -116,6 +122,7 @@ int do_checkqpasswd(char *r_user, char *r_pass, char *r_greet)
 #if WANT_CRAM_SHA1
 /* 4. hmac_sha1 checking (CRAM-SHA1) */
 		if (tocheck & METHOD_CRAM_SHA1) {
+			debug("METHOD_CRAM_SHA1\n");
 			method=4; e=encrypted;
 			hmac_sha1(r_pass, l_pass, digest);
 			for (j=0; j<20; j++) {
@@ -130,6 +137,7 @@ int do_checkqpasswd(char *r_user, char *r_pass, char *r_greet)
 #if WANT_CRAM_RIPEMD
 /* 5. hmac_rmd160 checking (CRAM-RIPEMD) */
 		if (tocheck & METHOD_CRAM_RIPEMD) {
+			debug("METHOD_CRAM_RIPEMD\n");
 			method=5; e=encrypted;
 			hmac_rmd160(r_pass, l_pass, digest);
 			for (j=0; j<20; j++) {
@@ -154,6 +162,7 @@ int do_checkqpasswd(char *r_user, char *r_pass, char *r_greet)
  */
 #if WANT_DIGEST_MD5
 		if (tocheck & METHOD_DIGEST_MD5) {
+			debug("METHOD_DIGEST_MD5\n");
 			char *nc=0, *qop=0, *realm=0, *nonce=0, *cnonce=0,
 				*authzid=0, *digesturi=0;
 			unsigned char ea1[33], ea2[33];
