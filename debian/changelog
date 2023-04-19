@@ -1,3 +1,20 @@
+qpasswd (0.5-0njl9.0) stretch-backports; urgency=medium
+
+  * Update for modern packaging standards (last changed for Debian 3.1 Sarge):
+    - source format now "3.0 (quilt)"
+    - update copyright to DEP-5
+    - convert debian/rules to use dh
+    - override "make": export dh environment; suppress stripping.
+      Let Debian Build System choose the right build arch.
+    - install into /bin not /command, it's the 21st century and FHS exists.
+      Use /bin since that's where the old package symlinked things.
+  * Update Makefile
+    - fix build and exec path for "make test".
+    - remove explicit compile options, use Debian environment.
+    - make multicheckpw and the rest world-executable.
+
+ -- Nick Leverton <nick@leverton.org>  Wed, 19 Apr 2023 23:55:04 +0100
+
 qpasswd (0.5-0njl.22) unstable; urgency=low
 
   * The "can't tell 2 from 22" release

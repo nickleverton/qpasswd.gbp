@@ -1,0 +1,4 @@
+statically-linked-binary [usr/bin/multicheckpw]
+elevated-privileges 4511 root/nogroup [usr/bin/multicheckpw]
+executable-is-not-world-readable 4511 [usr/bin/multicheckpw]
+non-standard-setuid-executable-perm 4511 [usr/bin/multicheckpw]

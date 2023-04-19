@@ -1,16 +1,27 @@
-This package was debianized by Nick Leverton <nick@leverton.org> on
-Wed, 11 Oct 2006 22:25:49 +0100.
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: http://www.mcmilk.de/projects/qpasswd/
+Upstream-Name: qpasswd
+Upstream-Contact: Tino Reichardt <crypto@mcmilk.de>
+Comment:
+ This package was debianized by Nick Leverton <nick@leverton.org> on
+ Wed, 11 Oct 2006 22:25:49 +0100.
+ and was updated from Debian 3.1 to Debian 10 on
+ Sun 23 Apr 02:03:22 BST 2023
 
-It was downloaded from http://www.mcmilk.de/projects/qpasswd/
+Files:
+ *
+License: GPL-2
+Copyright: 2003-2004 Tino Reichardt
 
-Upstream Author:  Tino Reichardt <crypto@mcmilk.de>
+Files:
+ m_multicheckpw.c
+License: GPL-2
+Copyright:
+ 2004 Andreas Aardal Hanssen <andreaha-qmail@lexx.infeline.org>
+ 2004 Tino Reichardt <milky-qpasswd@mcmilk.de>
 
-Copyright: 2004 Tino Reichardt
-
-License: GPL
-
-
-The Debian packaging is (C) 2006, Nick Leverton <nick@leverton.org> and
-is licensed under the GPL, see `/usr/share/common-licenses/GPL'.
-
+Files:
+ debian/*
+License: GPL-2+
+Copyright: 2006, 2023, Nick Leverton <nick@leverton.org>
 

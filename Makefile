@@ -16,7 +16,7 @@ CFLAGS	= -Os -Wall -pipe -fomit-frame-pointer
 LDFLAGS	= -s -lcrypt
 
 # extraflags
-CFLAGS += -mpreferred-stack-boundary=2 -march=$(ARCH)
+CFLAGS += -mpreferred-stack-boundary=2 -march=$(ARCH) -mcpu=$(ARCH)
 #CFLAGS += -W -Wchar-subscripts -Wmissing-prototypes -Wmissing-declarations -Wswitch -Wredundant-decls -Wunused
 #CFLAGS += -Werror
 #CFLAGS += -funroll-loops
