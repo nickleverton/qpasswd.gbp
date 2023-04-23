@@ -1,0 +1,22 @@
+ INSTALL
+=========
+
+1. Possibly, edit the Makefile (compilertuning etc)
+	$ vi Makefile
+
+2. Read the comments in params.h, and edit the #define's for your needs:
+	$ vi params.h
+
+3. Build it:
+	$ make it
+
+4. Install the binaries and the manpages:
+	# make setup check
+
+5. Read the documentation @ docs!
+	$ for i in docs/*; do less $i;done
+
+5. Read the manpages @ man!
+	$ for i in man/*; do man $i; done
+
+6. Edit your /service/qmail-*/run or /etc/minit/qmail-*/run files ...

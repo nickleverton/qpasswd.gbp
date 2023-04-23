@@ -1,0 +1,72 @@
+###############################################################################
+# /etc/qpasswd (test file)
+###############################################################################
+#
+# 1) comments begin with '#'
+# 2) empty lines are ignored
+# 3) in the homedirs has to be a .qpasswd file with a plaintext pw
+# 4) the .qpasswd file:
+#    - is needed for pw checking with the APOP cmd (@qmail)
+#    - is needed for cram-* + digest-md5 pw checking (SASL)
+#    - has to exist!
+#    - don't must belong to the user itself
+#    - can have multiple passwords, each password in one line
+#    - can't have comments
+#    - should't have empty lines
+###############################################################################
+# SAMPLES:
+#
+# [/some/path/to/put/in/here:uid:gid]
+# user1:home1 (timestamp is LASTPOP_DEFAULT secs valid)
+# user2:/home (timestamp is LASTPOP_DEFAULT secs valid)
+#
+# [/some/other/path:uid2:gid2:T1]
+# user1@xc2.de:home1 (T1 == time)
+# user2@xc2.de:/home1 (time is optional)
+# user3@xc2.de:/home2 (time is in seconds)
+# user4@xc2.de:/home3 (time is used for removing old entries)
+#
+# [/some/path/to/put/xx/here:uid3:gid3]
+# user1:home1  -> /some/path/to/put/in/here/home1/.qpasswd (uid3/gid3)
+# user2:/home  -> /home/.qpasswd (uid3/gid3)
+#
+# [/some/ccccc/path:uid4:gid4]
+# user1@lala.de:homeXY   -> /some/xxxxx/path/homeXY/.qpasswd (uid4/gid4)
+# user2@lala.de:/home    -> /home/.qpasswd (uid4/gid4)
+###############################################################################
+
+# [home-root:uid:gid:time-in-secs]
+
+# xy accounts
+[/home/xy:100:100:1000]
+xy@mcfcmilk.de:mail/xy
+xy@lala@mcmffilk.de:mail/xy2
+mcmilk:/home/mcmilk/pop3/bugtraq
+
+# xyz accounts
+[/home/xyz:100:100:1000]
+xyz@mcfcmilk.de:mail/xy
+xyz@lala@mcmffilk.de:mail/xy2
+z:/home/zzz/pop3/bugtraq
+
+[/var/qmail/alias/users/test.mcmilk.de:3003:3000]
+test1@test.mcmilk.de:test1
+test2@test.mcmilk.de:test2
+test3@test.mcmilk.de:test3
+test4@test.mcmilk.de:test4
+test5@test.mcmilk.de:test5
+test6@test.mcmilk.de:test6
+test7@test.mcmilk.de:test7
+test8@test.mcmilk.de:test8
+test9@test.mcmilk.de:test9
+
+[/var/qmail/alias/users/test2.mcmilk.de:3003:3000]
+dtest1@test2.mcmilk.de:test1
+dtest2@test2.mcmilk.de:test2
+dtest3@test2.mcmilk.de:test3
+dtest4@test2.mcmilk.de:test4
+dtest5@test2.mcmilk.de:test5
+dtest6@test2.mcmilk.de:test6
+dtest7@test2.mcmilk.de:test7
+dtest8@test2.mcmilk.de:test8
+dtest9@test2.mcmilk.de:test9

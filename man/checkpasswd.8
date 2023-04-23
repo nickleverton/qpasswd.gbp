@@ -1,0 +1,61 @@
+.TH  checkpasswd 8 "qpasswd tools %VER%" "%DATE%" "System Administrator's Manual"
+.SH NAME
+\fBcheckpasswd\fR \- password checking against systemusers
+.SH SYNOPSIS
+\fBcheckpasswd\fR subprogram [\fBargs\fR]
+.SH DESCRIPTION
+Use this utility to check user,pass,greet against the systemwide
+user/password database.
+.SH RETURN VALUES
+.br
+0\	password was okay
+.br
+1\	password failure
+.br
+2\	misuse
+.br
+111\	temporary failure
+.SH PROCESS-STATE CHANGES
+If \fBcheckpasswd\fR runs with root privileges, the following changes are made:
+.TP
+1.\	check for a valid password or exit with 2
+.TP
+2.\	SETgid + SETuid, if sth. here fails, exit with 111
+.TP
+3.\	chdir to the virtual home directory
+.TP
+4.\	set up serveral environment variables
+.TP
+Without root privileges, step two is left out!
+.SH ENVIRONMENT
+.TP
+$HOME
+becomes homedirectory of the authenticated user
+.TP
+$USER
+becomes the name of the authenticated user
+.TP
+$SHELL
+becomes the users homeshell of the authenticated user
+.TP
+$UID
+becomes the numerical value of the user id (uid) of the authenticated user
+.TP
+$GID
+becomes the numerical value of the group id (gid) of the authenticated user
+.SH FILES
+.TP
+/etc/passwd
+user account information of the system
+.TP
+/etc/shadow
+encrypted passwords and age information
+.SH SEE ALSO
+.BR checkqpasswd (8),
+.BR checkpasswd (8),
+.BR cmd5checkpw (8),
+.BR qpasswd (5)
+.SH VERSION
+This documentation describes \fBcheckpasswd\fR version %VER% of the qpasswd tools.
+.SH AUTHOR
+Tino Reichardt <milky-qpasswd@mcmilk.de>

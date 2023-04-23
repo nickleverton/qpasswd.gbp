@@ -1,0 +1,19 @@
+Thanks to lots of people for success and failure reports, code, ideas,
+and documentation.
+
+
+AAH =  Andreas Aardal Hanssen <andreaha-qmail@lexx.infeline.org>
+       - multi password checking
+
+FL  =  Felix von Leitner <der@fefe.de>
+       - dietlibc
+
+DJB =  D. J. Bernstein <djb@pobox.com>
+       - qmail @ all
+
+KB  =  Krzysztof Dabrowski
+       - wide aviable smtp-auth patch
+       - cmd5checkpw checkpassword
+
+SK  =  Sascha Klockow <der@dreamz-box.de>
+       - for testing

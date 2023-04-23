@@ -1,0 +1,26 @@
+#!/bin/sh
+
+ME=`head -1 /var/qmail/control/me`
+QUSER="qmaila"
+QUID=`id -u $QUSER`
+QGID=`id -g $QUSER`
+
+exec 2>&1
+exec 20>&1
+exec 21>&1
+exec 22>&1
+exec 23>&1
+exec 25>&1
+
+#/command/recordio \
+
+exec \
+env -i PATH="/command:/bin:/usr/bin" \
+/command/envuidgid $QUSER \
+/command/tcpserver -g $QGID -u $QUID -v -R -l 0 0 110 \
+/command/softlimit -m 3000000 \
+/command/qmail-popup "$ME" \
+/command/multicheckpw 2 \
+/command/checkqpasswd \
+/command/checkpasswd \
+/command/qmail-pop3d ./Maildir/

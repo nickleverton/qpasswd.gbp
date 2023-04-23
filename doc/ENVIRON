@@ -1,0 +1,40 @@
+ ENVIRONMENT VARIABLES FOR THE QPASSWD PACKAGE
+===============================================
+
+
+READFD (default: 3 - taken from params.h)
+ - is used as the reading fd for multicheckpw, checkqpasswd, checkpasswd
+ - checkpassword-compatible tools should always use fd 3
+ - this variable is used for testing, with READFD=0
+
+
+FD_QPASSWD       (default: 20 - taken from params.h)
+FD_CHECKPASSWD   (default: 21 - taken from params.h)
+FD_CHECKQPASSWD  (default: 22 - taken from params.h)
+FD_MULTICHECKPW  (default: 23 - taken from params.h)
+ - when ERRFD's is enabled in params.h, you can set with these variables
+   the logging file descriptor for each program
+
+
+LOG_VHOME_FOUND (logging for checkqpasswd)
+ - if set to sth., the string 'virtual home found: /some/path' is logged
+
+
+SASL (logging for checkqpasswd)
+ - if set, checkqpasswd will only authenticate against this type
+ - the values can be:
+   - PLAIN (also used for AUTH LOGIN and pop3 USER/PASS)
+   - APOP (only for pop3, apop style pass/greeting hash)
+   - CRAM-MD5
+   - CRAM-SHA1
+   - CRAM-RIPEMD
+   - DIGEST-MD5
+ - the case is ignored
+
+
+TCPREMOTEIP and TCPREMOTEPORT
+ - is used for creating the .lastpop file
+ - see tcp-environ(5)
+
+
+/TR 2004-01-13

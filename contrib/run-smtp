@@ -1,0 +1,24 @@
+#!/bin/sh
+
+ME=`head -1 /var/qmail/control/me`
+QUSER="qmaild"
+QUID=`id -u $QUSER`
+QGID=`id -g $QUSER`
+
+exec 2>&1  # tcpservers logging stuff to fd=2
+exec 23>&1 # the checkpasswords
+exec 25>&1 # qmail md patched writes its logging stuff to fd=25
+
+exec \
+env -i PATH="/command:/bin:/usr/bin" \
+ FD_CHECKPASSWD="23" \
+ FD_CHECKQPASSWD="23" \
+ FD_MULTICHECKPW="23" \
+/command/envuidgid $QUSER \
+/command/tcpserver -g $QGID -u $QUID -v -R -l 0 0 25 \
+/command/softlimit -m 3000000 \
+/command/qmail-smtpd "$ME" \
+/command/multicheckpw 2 \
+/command/checkqpasswd \
+/command/checkpasswd \
+/bin/true

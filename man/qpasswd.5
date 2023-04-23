@@ -1,0 +1,90 @@
+.TH  qpasswd 5 "qpasswd tools %VER%" "%DATE%" "File Formats Manual"
+.SH NAME
+\fBqpasswd\fR \- qmail password file
+.SH DESCRIPTION
+The \fBqpasswd\fR is a text file, that contains sections with lists of
+usernames:homedir pairs.
+.SH OVERVIEW
+.nf
+[/path/of/section1:uid:gid:optional-timestamp]
+user1:realative-path-to-home1
+user2:/absolute/path/to/home2
+user3:home3/is/relative
+user4:home4
+
+[/path/of/section2:uid:gid:optional-timestamp]
+user1@2:home1
+user2@2:home2
+user3@2:home3
+user4@2:home4
+.fi
+.SH RULES
+1.\	comments begin with '#'
+.br
+2.\	empty lines are ignored
+.br
+3.\	the homedir has to have a .qpasswd file
+.br
+4.\	the .qpasswd file:
+.br
+\	- has to exist!
+.br
+\	- each new line defines a password
+.br
+\	- is needed for SASL/APOP authentication
+.br
+\	- can't have comments
+.br
+\	- should't have empty lines
+.SH SAMPLE FILE
+.nf
+[/some/path/to/put/in/here:112:109]
+user1:home1
+# if checkqpasswd reads 'user1' as username, it would try:
+# -> read /etc/qpasswd, search the user 'user1'
+# -> read $VHOME/.qpasswd @ /some/path/to/put/in/here/home1/.qpasswd
+# -> switch to group with gid=109 (if getuid = root)
+# -> switch to user with uid=112 (if getuid = root)
+# -> setting up serveral environment vaiables: UID,GID,HOME,USER,SHELL
+# -> chdir to /some/path/to/put/in/here/home1
+# -> exit with 0, if that all was okay
+
+[/some/other/path:22:2222]
+user1@foo.bar:home1
+user2@foo.bar:/home1
+user3@foo.bar:/home2
+user4@foo.bar:/home3
+
+[/some/path/to/put/xx/here:3:3]
+user1@3.com:home1
+user2@3.com:/home
+
+[/some/ccccc/path:4:44]
+user1@lala.de:homeXY
+user2@lala.de:/home
+.fi
+.SH FILES
+\fB/etc/qpasswd\fR:
+.SH SECURITY
+.TP
+\fB/etc/qpasswd\fR:
+I use a 660 permission for this file:
+.br
+-rw-rw----  root.admins
+.TP
+checkpassword programs:
+I use a 4510 permission for
+.BR multicheckpw (8),
+.BR checkpasswd (8)
+and
+.BR checkqpasswd (8).
+.br
+-r-s--x---  root.nofiles
+.SH SEE ALSO
+.BR passwd (5),
+.BR shadow (5)
+.SH VERSION
+This documentation describes the version %VER% of the \fBqpasswd\fR
+fileformat.
+.SH AUTHOR
+Tino Reichardt <milky-qpasswd@mcmilk.de>

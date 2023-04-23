@@ -1,0 +1,39 @@
+ README FOR THE QPASSWD PACKAGE
+================================
+
+The qpasswd tools are a collection of various tools (checkpasswd, checkqpasswd,
+multicheckpw, and others). They are meant for use with checkpassword-compatible
+authentication programs like qmail-popup and qmail-smtpd. Currently, the
+following auth mechanism are supported: plain, login, apop, cram-md5, cram-sha1,
+cram-ripemd, and digest-md5. No special libraries are required, and it compiles
+against dietlibc.
+
+
+We have currently 5 tools:
+
+1. multicheckpw
+   - with this program, you can use multiple program, which use the
+     checkpassword interface
+
+2. checkqpasswd
+   - with this program, you can authenticate virtual users, which don't
+     really exist on your system
+   - authentication is done against the /etc/qpasswd database, which
+     consists on 'user:homedir' pairs ... the clean text password is
+     saved in the .qpasswd in the home directory of the user
+   - see qpasswd.5 + checkqpasswd.8 for more information about this
+
+3. checkpasswd
+   - with this program, you can authenticate users against the /etc/passwd
+     database
+
+4. qpasswd
+   - with this program, you can manage the accounts of the virtual users of
+     the /etc/qpasswd database (xxx: not ready yet!)
+
+5. test-cases
+   - during compilation this program is executed for testing the correctness of
+     the crypto functions: hmac_md5 + hmac_ripemd + hmac_sha1
+
+/TR 2004-04-08
+

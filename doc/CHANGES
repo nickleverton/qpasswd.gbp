@@ -1,0 +1,29 @@
+0.5
+- updated documentation
+- added environment variable $SASL check in checkqpasswd
+  - if we set it to some authentication method, only this method is tried,
+    instead of all (will save some time on servers)
+- added die_shell.c
+- fixed THANKS, tw=80 now
+- added case_diffb.c - for reading the SASL environment variable
+
+0.4
+- changed docs
+- updated copyright notice @ m_multicheckpw.c
+
+0.3
+- again, fixed serveral typos in the documentation
+- added a docs/README
+- fixed digest-md5:
+  - for smtpd it writes the digest response just to a file
+  - for qmail-popup it writes the filename to a special ENV variable,
+    which is read by qmail-pop3d ...
+
+0.2
+- oh no: corrected testvalues @ params.h, alls FD's were set to 1
+- corrected some typos in the manpages
+- security: install multicheckpw with 4510 perms, not 4511!
+
+0.1
+- first version
+- lastpop stuff isn't ready :(
